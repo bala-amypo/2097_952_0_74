@@ -1,32 +1,34 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
 
 @RestController
+@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
-    private StudentService stdser;
+    private StudentService studentService;
 
-    @PostMapping("/student")
+    // POST - save student
+    @PostMapping
     public Student saveStudent(@RequestBody Student student) {
-        return stdser.postStudent(student);
+        return studentService.saveStudent(student);
     }
-    @GetMapping("/getall")
-    public List<Student> get(){
-      return stdser.getAllStudents();
+
+    // GET - get all students
+    @GetMapping
+    public List<Student> getAllStudents() {
+        return studentService.getAllStudents();
     }
-     @GetMapping("/students/{id}")
+
+    // GET - get student by id
+    @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
