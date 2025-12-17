@@ -7,11 +7,12 @@ import org.sprinframework.beans.factory.annotation.Autowired;
 import com.example.demo.repository.StudentRepository;
 
 @Service
-public class StudentServiceImpl implememts StudentService{
+public class StudentServiceImpl implements StudentService{
     @Autowired
     StudentRepository stdrepo;
-    @Override 
-    public class postStudent(Student st){
-           return stdrepo.save(st); 
-    }
+    @Override
+public Student saveStudent(Student st) {
+    return stdrepo.save(st);
+}
+
 }

@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.antity.Student;
+import com.example.demo.entity.Student;
 
 @RestController
 public class StudentController{
