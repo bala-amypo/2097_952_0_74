@@ -23,7 +23,7 @@ public class Student{
         this.id=id;
     }
     public String getName(){
-        return Name;
+        return name;
     }
     public void setName(String Name){
         this.name=name;
@@ -44,7 +44,7 @@ public class Student{
         return cgpa;
     }
     public void setcgpa(float cgpa){
-        this.cgpa=cgpa
+        this.cgpa=cgpa;
     }
     public Student(){
 
