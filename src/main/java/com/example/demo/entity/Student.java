@@ -28,13 +28,13 @@ public class Student{
     public LocalDate getdob(){
         return dob;
     }
-    public void setdob(String dob){
+    public void setdob(LocalDate dob){
         this.dob=dob;
     }
     public float getcgpa(){
         return cgpa;
     }
-    public void setcgpa()
-
-
+    public void setcgpa(float cgpa){
+        this.cgpa=cgpa
+    }
 }
