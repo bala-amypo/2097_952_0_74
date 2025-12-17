@@ -7,6 +7,6 @@ import com.example.demo.antity.Student;
 public class StudentController{
      @PostMapping("/addStudent")
      public Student addStudent(@RequestBody Student st){
-        return 
+        return stdser.postStudent(st);
      }
 }
