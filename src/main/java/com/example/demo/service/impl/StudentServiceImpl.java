@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
+import com.example.demo.model.Student;
 import com.example.demo.entity.Student;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
@@ -27,26 +27,3 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findById(id).orElse(null);
     }
 }
-package com.example.demo.service.impl;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.example.demo.model.Student;
-import com.example.demo.repository.StudentRepository;
-import com.example.demo.service.StudentService;
-
-@Service
-public class StudentServiceImpl implements StudentService {
-
-    @Autowired
-    private StudentRepository studentRepository;   // ✅ DECLARED
-
-    @Override
-    public Student getStudentById(Long id) {        // ✅ EXACT MATCH
-        return studentRepository.findById(id).orElse(null);
-    }
-}
-
-
-
