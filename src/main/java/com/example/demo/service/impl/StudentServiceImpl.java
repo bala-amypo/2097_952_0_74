@@ -29,4 +29,11 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> getStudentById(Long id) {
         return studentRepository.findById(id);
     }
+    @Override
+    public String updateData(Long id,Student st){
+        boolean status=studentRepository.existById(id);
+        if(status){
+            
+        }
+    }
 }
