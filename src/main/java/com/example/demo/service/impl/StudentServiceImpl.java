@@ -30,8 +30,8 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findById(id);
     }
     @Override
-    public String updateData(Long id,Student st){
-        boolean status=studentRepository.existById(id);
+    public String updateData(Long id,Student student){
+        boolean status=studentRepository.existsById(id);
         if(status){
             st.setId(id);
             studentRepository.save(st);
@@ -43,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
     }
     @Override
     public String deleteData(Long id){
-        boolean status=studentRepository.existById(id);
+        boolean status=studentRepository.existsById(id);
         if(status){
             studentRepository.deleteById(id);
             return "Student Deleted Successfully";

@@ -33,7 +33,7 @@ public class StudentController {
     public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
-    @("/update/{id}")
+    @PutMapping("/update/{id}")
     public String update(@PathVariable Long id,@RequestBody Student student){
         return studentRepository.updateData(id,student);
     }
