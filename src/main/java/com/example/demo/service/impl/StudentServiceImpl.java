@@ -1,55 +1,54 @@
 package com.example.demo.service.impl;
-
 import java.util.*;
-  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.entity.Student;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
-
 @Service
 public class StudentServiceImpl implements StudentService {
-
-    @Autowired
-    private StudentRepository studentRepository;
-
-    @Override
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+   @Autowired
+   StudentRepository stdrepo;
+   @Override
+    public Student postStudent(Student st){
+        return stdrepo.save(st);
     }
-
     @Override
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
-    }
-
-    @Override
-    public Optional<Student> getStudentById(Long id) {
-        return studentRepository.findById(id);
+        return stdrepo.findAll();
     }
     @Override
-    public String updateData(Long id,Student student){
-        boolean status=studentRepository.existsById(id);
+    public Optional<Student> getById(Long id){
+         return stdrepo.findById(id);
+    }
+    @Override
+    public Student UpdateStudent(Long id, Student st) {
+        st.setId(id);
+        return stdrepo.save(st);
+    }
+    @Override
+    public String updateData(Long id,Student st){
+        boolean status=stdrepo.existsById(id);
         if(status){
-            student.setId(id);
-            studentRepository.save(student);
-            return"Student updated Successfully";
+            st.setId(id);
+            stdrepo.save(st);
+            return "Student updated successfully";
         }
         else{
-            return "Student with Id "+id+" not found";
+            return "Student with Id "+id+" NOT FOUND";
         }
     }
     @Override
     public String deleteData(Long id){
-        boolean status=studentRepository.existsById(id);
-        if(status){
-            studentRepository.deleteById(id);
+         boolean status=stdrepo.existsById(id);
+         if(status){
+            stdrepo.deleteById(id);
             return "Student Deleted Successfully";
-        }
-        else{
-            return "Student not found with ID "+id+" not found";
-        }
+            
+         }
+         else{
+            return "Student with ID "+id+" not found";
+         }
     }
+
 }

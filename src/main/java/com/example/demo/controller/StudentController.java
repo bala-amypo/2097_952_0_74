@@ -1,43 +1,35 @@
 package com.example.demo.controller;
-
-import java.util.List;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
-
 @RestController
-@RequestMapping("/students")
 public class StudentController {
-
     @Autowired
-    private StudentService studentService;   
-
-    @PostMapping
-    public Student saveStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+    StudentService stdser;
+    @PostMapping("/addStudent")
+    public Student addStudent(@RequestBody Student st){
+        return stdser.postStudent(st);
     }
-
-    @GetMapping
+    @GetMapping("/getAllStudents")
     public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+        return stdser.getAllStudents();
     }
-
-    @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id);
+    @GetMapping("/getById/{id}")
+    public Optional<Student> getId(@PathVariable Long id){
+        return stdser.getById(id);
     }
-
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Long id,@RequestBody Student student) {
-        return studentService.updateStudent(id, student);
+    public Student UpdateStudent(@PathVariable Long id, @RequestBody Student st) {
+        return stdser.UpdateStudent(id, st);
     }
-
-    @DeleteMapping("/{id}")
-    public String deleteStudentById(@PathVariable Long id) {
-        studentService.deleteStudentById(id);  
-        return "Student deleted successfully";
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable Long id, @RequestBody Student st){
+        return stdser.updateData(id,st);
+    }
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        return stdser.deleteData(id);
     }
 }
