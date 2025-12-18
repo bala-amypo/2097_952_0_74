@@ -33,9 +33,9 @@ public class StudentController {
     public Optional<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
-    @GetMapping("/update/{id}")
-    public String update(@PathVariable Long id,@RequestBody Student st){
-        return studentRepository.updateData(id,st);
+    @("/update/{id}")
+    public String update(@PathVariable Long id,@RequestBody Student student){
+        return studentRepository.updateData(id,student);
     }
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id){
