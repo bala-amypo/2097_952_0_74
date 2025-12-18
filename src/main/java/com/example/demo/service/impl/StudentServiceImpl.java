@@ -33,8 +33,10 @@ public class StudentServiceImpl implements StudentService {
     public String updateData(Long id,Student st){
         boolean status=studentRepository.existById(id);
         if(status){
-
-            
+            st.setId(id);
+            studentRepository.save(st);
+            return"Student updated Successfully";
         }
+        else{}
     }
 }
