@@ -37,4 +37,5 @@ public class StudentController {
     public String update(@PathVariable Long id,@RequestBody Student st){
         return studentRepository.updateData(id,st);
     }
+    @DeleteMapping("/dee")
 }
