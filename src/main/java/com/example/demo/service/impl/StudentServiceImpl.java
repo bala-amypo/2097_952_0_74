@@ -37,6 +37,8 @@ public class StudentServiceImpl implements StudentService {
             studentRepository.save(st);
             return"Student updated Successfully";
         }
-        else{}
+        else{
+            return "Student with Id "+id+" not found";
+        }
     }
 }
